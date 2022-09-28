@@ -1,17 +1,18 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import "../styles/App.css";
+import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
+import Footer from "./Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
+        <Nav />
         <Routes>
-          {/* <Nav /> */}
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home />} />
-          {/* <Player /> */}
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );
