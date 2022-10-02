@@ -1,9 +1,11 @@
 .home {
-  border: 1px solid black;
-
+  /* grid */
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+
   overflow: auto;
+  background-color: #121212;
+  color: #fff;
 }
 
 li {

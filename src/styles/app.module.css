@@ -1,3 +1,14 @@
+:root {
+  --nav-bg: #000;
+  --home-bg: #121212;
+  --footer-bg: #181818;
+  --footer-border: #282828;
+  --text-base: #fff;
+  --text-subdued: #a7a7a7;
+  --essential-subdued: #727272;
+  --decorative-subdued: #292929;
+}
+
 html, body {
   margin: 0;
   height: 100%;
@@ -10,5 +21,5 @@ html, body {
   /* grid container settings */
   display: grid;
   grid-template-columns: 240px 1fr;
-  grid-template-rows: 1fr 120px;
+  grid-template-rows: 1fr 90px;
 }
