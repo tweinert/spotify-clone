@@ -5,4 +5,8 @@
 
   background-color: #000;
   color: white;
+
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
 }
