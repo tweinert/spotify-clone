@@ -1,5 +1,6 @@
 .nav {
   border: 1px solid red;
 
-  
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
 }

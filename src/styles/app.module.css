@@ -1,0 +1,14 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow:hidden;
+}
+
+.app {
+  height: 100vh;
+
+  /* grid container settings */
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 1fr 120px;
+}
