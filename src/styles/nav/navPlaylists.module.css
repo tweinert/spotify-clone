@@ -1,0 +1,46 @@
+.playlistNavContainer {
+  padding-top: 36px;
+  box-sizing: border-box;
+}
+
+.buttonContainer {
+  
+}
+
+.createButton, .likedButton {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  height: 40px;
+  gap: 0px 16px;
+  padding: 0 20px;
+}
+
+.createButton {
+  background-color: transparent;
+  border: none;
+}
+
+.buttonText {
+  color: white;
+  font-size: 1rem;
+}
+
+.iconActive, .iconInactive {
+  display: block;
+  flex-shrink: 0;
+  height: 24px;
+  width: 24px;
+}
+
+a, a:visited {
+  color: #fff;
+}
+
+.iconActive {
+  fill: #fff;
+}
+
+.iconInactive {
+  fill: #a7a7a7;
+}
