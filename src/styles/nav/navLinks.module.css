@@ -14,7 +14,7 @@ ul {
   padding: 0;
 }
 
-.link {
+.link, .linkActive {
   display: flex;
   text-decoration: none;
   align-items: center;
@@ -23,7 +23,16 @@ ul {
   padding: 0 20px;
 }
 
-.iconActive, .iconInactive {
+.link {
+  fill: #a7a7a7;
+}
+
+.linkActive, .linkActive > .text {
+  fill: #fff;
+  color: #fff;
+}
+
+.icon {
   display: block;
   flex-shrink: 0;
   height: 24px;
@@ -36,12 +45,4 @@ ul {
 
 a, a:visited {
   color: #fff;
-}
-
-.iconActive {
-  fill: #fff;
-}
-
-.iconInactive {
-  fill: #a7a7a7;
 }
