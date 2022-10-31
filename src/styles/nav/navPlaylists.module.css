@@ -7,14 +7,14 @@
   
 }
 
-.createButton, .likedButton {
+/* .createButton {
   display: flex;
   text-decoration: none;
   align-items: center;
   height: 40px;
   gap: 0px 16px;
   padding: 0 20px;
-}
+} */
 
 .createButton {
   background-color: transparent;
@@ -22,7 +22,7 @@
 }
 
 .buttonText {
-  color: white;
+  color: #a7a7a7;
   font-size: 1rem;
 }
 
@@ -34,7 +34,7 @@
   box-sizing: border-box;
 }
 
-.playlistLink {
+.link, .linkActive, .createButton {
   display: flex;
   text-decoration: none;
   align-items: center;
@@ -42,29 +42,33 @@
   padding: 0 20px;
 }
 
-.playlistText {
-  font-size: 14px;
+.link {
+  fill: #a7a7a7;
 }
 
-.iconActive, .iconInactive {
+.linkActive, .linkActive > .buttonText {
+  fill: #fff;
+  color: #fff;
+}
+
+.createButton, .createButton > .buttonText {
+  fill: #fff;
+  color: #a7a7a7;
+}
+
+.buttonText {
+  font-size: 1rem;
+}
+
+.icon {
   display: block;
   flex-shrink: 0;
   height: 24px;
   width: 24px;
 }
 
+
+
 a, a:visited {
   color: #a7a7a7;
-}
-
-a:hover {
-  color: #fff;
-}
-
-.iconActive {
-  fill: #fff;
-}
-
-.iconInactive {
-  fill: #a7a7a7;
 }
