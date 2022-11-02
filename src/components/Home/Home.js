@@ -1,33 +1,13 @@
 import Styles from "../../styles/home/home.module.css";
+import RecentlyPlayed from "./RecentlyPlayed";
+import CardViewer from "./CardViewer";
 
 function Home() {
   return (
     <div className={Styles.home}>
-      <ul>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-        <li>Test</li>
-      </ul>
+      <RecentlyPlayed />
+      <CardViewer />
+      <CardViewer />
     </div>
   );
 }
