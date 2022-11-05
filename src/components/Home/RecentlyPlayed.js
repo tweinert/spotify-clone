@@ -5,27 +5,27 @@ function RecentlyPlayed() {
     <div className={Styles.mainContainer}>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
       <div className={Styles.recentContainer}>
         <img className={Styles.recentImage}></img>
-        <span className={Styles.recentText}></span>
+        <span className={Styles.recentText}>Example Playlist Name</span>
       </div>
     </div>
   );

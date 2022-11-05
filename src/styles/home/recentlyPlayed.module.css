@@ -10,10 +10,25 @@
 }
 
 .recentContainer {
-  border: 1px solid blue;
   border-radius: 10px;
+  background: #292929;
 
   height: 100px;
   
   flex: 1 1 30%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.recentImage {
+  height: 100px;
+  width: 100px;
+
+  border-radius: 10px 0px 0px 10px;
+}
+
+.recentText {
+  padding: 0 25px;
 }
