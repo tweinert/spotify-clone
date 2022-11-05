@@ -1,0 +1,19 @@
+.mainContainer {
+  border: 1px solid red;
+  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: space-around;
+
+  gap: 20px 30px;
+}
+
+.recentContainer {
+  border: 1px solid blue;
+  border-radius: 10px;
+
+  height: 100px;
+  
+  flex: 1 1 30%;
+}
