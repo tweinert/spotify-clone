@@ -7,7 +7,6 @@ function Home() {
     <div className={Styles.home}>
       <RecentlyPlayed />
       <CardViewer />
-      <CardViewer />
     </div>
   );
 }
