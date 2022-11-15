@@ -4,7 +4,8 @@
 }
 
 .cardContainer {
-  border: 1px solid blue;
+  background-color: #161616;
+  border-radius: 10px;
   margin: 25px 25px;
 
   display: flex;
@@ -17,6 +18,8 @@
 }
 
 .cardImage {
+  border-radius: 10px;
+  
   min-height: 160px;
   min-width: 160px;
 
