@@ -1,12 +1,17 @@
+.title {
+  margin: 50px 0 0 25px;
+}
+
 .mainContainer {
   display: flex;
   flex-direction: row;
+  margin-top: 50px;
 }
 
 .cardContainer {
   background-color: #161616;
   border-radius: 10px;
-  margin: 25px 25px;
+  margin: 0 25px;
 
   display: flex;
   flex-direction: column;

@@ -1,12 +1,11 @@
 .mainContainer {
-  border: 1px solid red;
-  
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   flex-flow: space-around;
 
   gap: 20px 30px;
+  margin: 50px 25px 0 25px;
 }
 
 .recentContainer {
