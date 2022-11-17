@@ -1,3 +1,7 @@
+.title {
+  margin: 50px 0 0 25px;
+}
+
 .mainContainer {
   display: flex;
   flex-direction: row;
