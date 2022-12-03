@@ -1,4 +1,7 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore/lite";
+import db from "./Firebase";
 import Styles from "../styles/app.module.css";
 import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
@@ -6,6 +9,20 @@ import Footer from "./Footer/Footer";
 
 
 function App() {
+  const [artists, setArtists] = useState([]);
+
+  // get artists from db
+  useEffect(() => {
+    fetchArtistData();
+  }, []);
+
+  const fetchArtistData = async() => {
+    const songsCol = collection(db, "Songs");
+    const songsSnapshot = await getDocs(songsCol);
+    const songsList = songsSnapshot.docs.map(doc => doc.data());
+    console.log(songsList);
+  }
+
   return (
     <BrowserRouter>
       <div className={Styles.app}>
