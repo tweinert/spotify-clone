@@ -20,7 +20,16 @@ function App() {
     const songsCol = collection(db, "Songs");
     const songsSnapshot = await getDocs(songsCol);
     const songsList = songsSnapshot.docs.map(doc => doc.data());
+
+    // get all unique artists and add to array
+    let uniqueArtists = [];
+    for (const element of songsList) {
+      if (!uniqueArtists.includes(element.Artist)) {
+        uniqueArtists.push(element.Artist);
+      }
+    }
     console.log(songsList);
+    console.log("Artists: " + uniqueArtists);
   }
 
   return (
