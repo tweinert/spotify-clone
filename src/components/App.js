@@ -16,6 +16,13 @@ function App() {
     fetchArtistData();
   }, []);
 
+  /*
+    TODO change this to use new database format:
+    Artists > ID > Songs > ID > Album, Title, Length, Track Number
+    This means that unique artists can easily be pulled directly from top level of database.
+    Send artist name through as parameter
+  */
+  // gets unique artists from song list in database
   const fetchArtistData = async() => {
     const songsCol = collection(db, "Songs");
     const songsSnapshot = await getDocs(songsCol);
