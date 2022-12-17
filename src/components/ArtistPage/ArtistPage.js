@@ -1,7 +1,5 @@
 import Styles from "../../styles/artistPage/artistPage.module.css";
 import Header from "./Header.js";
-import Player from "./Player.js";
-import SongList from "./SongList.js";
 
 function ArtistPage() {
   return (

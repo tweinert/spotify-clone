@@ -1,0 +1,11 @@
+.header {
+  background-color: #121212;
+  height: 200px;
+  
+}
+
+.title {
+  font-size: 56px;
+  font-weight: bold;
+  color: white;
+}

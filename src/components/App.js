@@ -6,6 +6,7 @@ import Styles from "../styles/app.module.css";
 import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import ArtistPage from './ArtistPage/ArtistPage';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home />} />
+          <Route path="/artistPage" element={<ArtistPage />} />
         </Routes>
         <Footer />
       </div>
