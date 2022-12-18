@@ -1,0 +1,16 @@
+.player {
+  background-color: #282828;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 40px;
+}
+
+.playButton {
+  height: 50px;
+  width: 50px;
+  
+  border-radius: 50%;
+}
