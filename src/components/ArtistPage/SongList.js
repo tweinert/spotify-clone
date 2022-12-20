@@ -3,7 +3,12 @@ import Styles from "../../styles/artistPage/songList.module.css"
 function SongList() {
   return (
     <div className={Styles.songList}>
-      This is the song list.
+      <div className={Styles.tableHeader}>
+        
+      </div>
+      <div className={Styles.tableSongs}>
+
+      </div>
     </div>
   );
 }
