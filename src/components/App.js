@@ -17,28 +17,28 @@ function App() {
     fetchArtistData();
   }, []);
 
-  /*
-    TODO change this to use new database format:
-    Artists > ID > Songs > ID > Album, Title, Length, Track Number
-    This means that unique artists can easily be pulled directly from top level of database.
-    Send artist name through as parameter
-  */
+  // for testing purposes
+  useEffect(() => {
+    console.log(artists);
+  }, [artists]);
+
   // gets unique artists from song list in database
   const fetchArtistData = async() => {
-    const songsCol = collection(db, "Songs");
-    const songsSnapshot = await getDocs(songsCol);
-    const songsList = songsSnapshot.docs.map(doc => doc.data());
+    const artistCol = collection(db, "Artists");
+    const artistSnapshot = await getDocs(artistCol);
+    const artistList = artistSnapshot.docs.map(doc => doc.data());
 
     // get all unique artists and add to array
     let uniqueArtists = [];
-    for (const element of songsList) {
-      if (!uniqueArtists.includes(element.Artist)) {
-        uniqueArtists.push(element.Artist);
+    for (const element of artistList) {
+      if (!uniqueArtists.includes(element.Name)) {
+        uniqueArtists.push(element.Name);
       }
     }
-    console.log(songsList);
-    console.log("Artists: " + uniqueArtists);
+
+    setArtists([...uniqueArtists]);
   }
+
 
   return (
     <BrowserRouter>
