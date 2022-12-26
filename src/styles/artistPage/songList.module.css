@@ -1,3 +1,23 @@
 .songList {
   background-color: #282828;
 }
+
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 10fr 8fr 2fr;
+  grid-template-rows: 1fr;
+  padding-left: 50px;
+}
+
+.tableSongs {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 30px;
+  grid-auto-rows: 30px;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 10fr 8fr 2fr;
+  padding-left: 50px;
+}
