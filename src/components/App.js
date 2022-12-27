@@ -11,6 +11,7 @@ import ArtistPage from './ArtistPage/ArtistPage';
 
 function App() {
   const [artists, setArtists] = useState([]);
+  const [artistComponents, setArtistComponents] = useState([]);
 
   // get artists from db
   useEffect(() => {
@@ -19,14 +20,14 @@ function App() {
 
   // for testing purposes
   useEffect(() => {
-    console.log(artists);
-  }, [{artists}]);
+    createArtistComponents();
+  }, [artists]);
 
   // gets unique artists from song list in database
   const fetchArtistData = async() => {
     const artistCol = collection(db, "Artists");
     const artistSnapshot = await getDocs(artistCol);
-    const artistList = artistSnapshot.docs.map(doc => doc.data());
+    // const artistList = artistSnapshot.docs.map(doc => doc.data());
 
     // get all unique artists and add to array
     let uniqueArtists = [];
@@ -35,7 +36,6 @@ function App() {
       uniqueArtists.push(obj);
     }
 
-
     setArtists([...uniqueArtists]);
   }
 
@@ -43,6 +43,19 @@ function App() {
     // for each artist in state artists array
     // create artistPage component using that artist's id as link
     // set unique key for each component (artist id)
+    let artistComps = [];
+    for (const element of artists) {
+      let id = element.id;
+      let name = element.name;
+      let path = "/" + id;
+
+      let comp = <Route path={path} element={<ArtistPage key={id} artistName={name}/>} />;
+
+      artistComps.push(comp);
+    }
+
+    setArtistComponents([...artistComps]);
+    console.log(artistComponents);
   }
 
 
