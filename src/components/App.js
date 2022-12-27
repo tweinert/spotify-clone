@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { collection, doc, getDocs } from "firebase/firestore/lite";
 import db from "./Firebase";
 import Styles from "../styles/app.module.css";
 import Nav from "./Nav/Nav";
@@ -20,7 +20,7 @@ function App() {
   // for testing purposes
   useEffect(() => {
     console.log(artists);
-  }, [artists]);
+  }, [{artists}]);
 
   // gets unique artists from song list in database
   const fetchArtistData = async() => {
@@ -30,13 +30,19 @@ function App() {
 
     // get all unique artists and add to array
     let uniqueArtists = [];
-    for (const element of artistList) {
-      if (!uniqueArtists.includes(element.Name)) {
-        uniqueArtists.push(element.Name);
-      }
+    for (const element of artistSnapshot.docs) {
+      let obj = {id: element.id, name: element.data().Name};
+      uniqueArtists.push(obj);
     }
 
+
     setArtists([...uniqueArtists]);
+  }
+
+  const createArtistComponents = () => {
+    // for each artist in state artists array
+    // create artistPage component using that artist's id as link
+    // set unique key for each component (artist id)
   }
 
 
