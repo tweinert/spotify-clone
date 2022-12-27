@@ -3,10 +3,10 @@ import Header from "./Header.js";
 import Player from "./Player";
 import SongList from "./SongList";
 
-function ArtistPage() {
+function ArtistPage(props) {
   return (
     <div className={Styles.artistPage}>
-      <Header />
+      <Header artistName={props.artistName} />
       <Player />
       <SongList />
     </div>

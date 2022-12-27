@@ -49,7 +49,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route path={path} element={<ArtistPage key={id} artistName={name}/>} />;
+      let comp = <Route key={id} path={path} element={<ArtistPage key={id} artistName={name}/>} />;
 
       artistComps.push(comp);
     }
@@ -67,6 +67,7 @@ function App() {
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home />} />
           <Route path="/artistPage" element={<ArtistPage />} />
+          {artistComponents}
         </Routes>
         <Footer />
       </div>
