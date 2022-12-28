@@ -49,7 +49,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<ArtistPage key={id} artistName={name}/>} />;
+      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} artistName={name}/>} />;
 
       artistComps.push(comp);
     }
