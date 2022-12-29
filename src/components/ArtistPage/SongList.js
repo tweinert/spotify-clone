@@ -12,15 +12,16 @@ function SongList(props) {
   const [songs, setSongs] = useState([]);
   const [songComponents, setSongComponents] = useState([]);
 
+  // get song data
   useEffect(() => {
     fetchSongData();
   }, []);
 
   // update song list
   useEffect(() => {
-    console.log(songs);
     createSongComponents();
   }, [songs]);
+
 
   // get song info and store each song as object in state array
   const fetchSongData = async() => {
@@ -29,7 +30,10 @@ function SongList(props) {
     const songSnap = await getDocs(subColRef);
     const songList = songSnap.docs.map(doc => doc.data());
 
-    setSongs([...songList]);
+    // sort song list here
+    let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
+
+    setSongs([...sortArray]);
   }
 
   const createSongComponents = () => {
