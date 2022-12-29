@@ -24,25 +24,37 @@ function SongList(props) {
 
 
   // get song info and store each song as object in state array
+  // TODO order by track number AND album
   const fetchSongData = async() => {
-    const idDoc = doc(db, "Artists", props.id);
     const subColRef = collection(db, "Artists", props.id, "Songs");
     const songSnap = await getDocs(subColRef);
     const songList = songSnap.docs.map(doc => doc.data());
 
-    // sort song list here
+    // sort song list
     let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
 
     setSongs([...sortArray]);
   }
 
+  // TODO length to minutes:seconds
   const createSongComponents = () => {
     let songComps = [];
     for (const element of songs) {
       let album = element.Album;
-      let length = element.Length;
       let title = element.Title;
       let trackNumber = element["Track Number"];
+      // change length value to minutes:seconds
+      let length = element.Length;
+      let minutes = 0;
+      let seconds = length;
+      if (length > 60) {
+        minutes = (Math.floor(length / 60));
+        seconds = (length - (minutes * 60));
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+      length = minutes + ":" + seconds;
 
       let comp = <div className={Styles.tableRow} key={title}><div>{trackNumber}</div><div>{title}</div><div>{album}</div><div>{length}</div></div>;
 
