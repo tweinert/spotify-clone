@@ -8,25 +8,27 @@ function SongList(props) {
   // idDoc > songCol > songIdDoc > Album, Length, Title, Track Number FIELD
   // create tableRow for each song
   // LATER: order by album
+  
+  const [songs, setSongs] = useState([]);
 
-  // get song info and store each song as object in state array
   useEffect(() => {
     fetchSongData();
   }, []);
 
+  // update song list
+  useEffect(() => {
+    console.log(songs);
+    
+  }, [songs]);
+
+  // get song info and store each song as object in state array
   const fetchSongData = async() => {
     const idDoc = doc(db, "Artists", props.id);
     const subColRef = collection(db, "Artists", props.id, "Songs");
     const songSnap = await getDocs(subColRef);
     const songList = songSnap.docs.map(doc => doc.data());
-    console.log(songList);
 
-    // get all unique artists and add to array
-    // let uniqueArtists = [];
-    // for (const element of artistSnapshot.docs) {
-    //   let obj = {id: element.id, name: element.data().Name};
-    //   uniqueArtists.push(obj);
-    // }
+    setSongs([...songList]);
   }
   
   return (
