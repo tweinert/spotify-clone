@@ -7,9 +7,10 @@ function SongList(props) {
   // use props.id to access Songs collection
   // idDoc > songCol > songIdDoc > Album, Length, Title, Track Number FIELD
   // create tableRow for each song
-  // LATER: order by album
+  // LATER: order by track number and album
   
   const [songs, setSongs] = useState([]);
+  const [songComponents, setSongComponents] = useState([]);
 
   useEffect(() => {
     fetchSongData();
@@ -18,7 +19,7 @@ function SongList(props) {
   // update song list
   useEffect(() => {
     console.log(songs);
-    
+    createSongComponents();
   }, [songs]);
 
   // get song info and store each song as object in state array
@@ -29,6 +30,22 @@ function SongList(props) {
     const songList = songSnap.docs.map(doc => doc.data());
 
     setSongs([...songList]);
+  }
+
+  const createSongComponents = () => {
+    let songComps = [];
+    for (const element of songs) {
+      let album = element.Album;
+      let length = element.Length;
+      let title = element.Title;
+      let trackNumber = element["Track Number"];
+
+      let comp = <div className={Styles.tableRow} key={title}><div>{trackNumber}</div><div>{title}</div><div>{album}</div><div>{length}</div></div>;
+
+      songComps.push(comp);
+    }
+
+    setSongComponents([...songComps]);
   }
   
   return (
@@ -41,18 +58,7 @@ function SongList(props) {
       </div>
       <hr />
       <div className={Styles.tableSongs}>
-        <div className={Styles.tableRow}>
-          <div>1</div>
-          <div>Speak to Me</div>
-          <div>The Dark Side of the Moon</div>
-          <div>1:05</div>
-        </div>
-        <div className={Styles.tableRow}>
-          <div>2</div>
-          <div>Breathe (In the Air)</div>
-          <div>The Dark Side of the Moon</div>
-          <div>2:49</div>
-        </div>
+        {songComponents}
       </div>
     </div>
   );

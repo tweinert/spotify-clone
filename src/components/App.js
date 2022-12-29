@@ -55,7 +55,6 @@ function App() {
     }
 
     setArtistComponents([...artistComps]);
-    console.log(artistComponents);
   }
 
 
