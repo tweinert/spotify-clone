@@ -36,13 +36,13 @@ function SongList(props) {
     setSongs([...sortArray]);
   }
 
-  // TODO length to minutes:seconds
   const createSongComponents = () => {
     let songComps = [];
     for (const element of songs) {
       let album = element.Album;
       let title = element.Title;
       let trackNumber = element["Track Number"];
+      
       // change length value to minutes:seconds
       let length = element.Length;
       let minutes = 0;
