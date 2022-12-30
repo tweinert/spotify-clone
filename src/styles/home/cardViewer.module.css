@@ -19,7 +19,10 @@
 
   flex: 1 0;
   min-width: 200px;
-  aspect-ratio: 0.65;
+  max-width: 220px;
+  min-height: 300px;
+  max-height: 330px;
+  /* aspect-ratio: 0.65; */
 }
 
 .cardImage {

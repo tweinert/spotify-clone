@@ -16,18 +16,19 @@ function App() {
   // get artists from db
   useEffect(() => {
     fetchArtistData();
+    console.log("App mount");
   }, []);
 
   // for testing purposes
   useEffect(() => {
     createArtistComponents();
+    console.log("App artists changed");
   }, [artists]);
 
   // gets unique artists from song list in database
   const fetchArtistData = async() => {
     const artistCol = collection(db, "Artists");
     const artistSnapshot = await getDocs(artistCol);
-    // const artistList = artistSnapshot.docs.map(doc => doc.data());
 
     // get all unique artists and add to array
     let uniqueArtists = [];
@@ -64,7 +65,7 @@ function App() {
         <Nav />
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home artistArr={artists} />} />
           <Route path="/artistPage" element={<ArtistPage />} />
           {artistComponents}
         </Routes>
