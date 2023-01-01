@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import Styles from "../../styles/home/cardViewer.module.css";
 
 function CardViewer(props) {
@@ -21,11 +22,11 @@ function CardViewer(props) {
       // create card for each artist
       let name = element.name;
       let id = element.id;
-      let comp = <div className={Styles.cardContainer} key={id}>
+      let comp = <NavLink to={"/" + id}className={Styles.cardContainer} key={id}>
         <img className={Styles.cardImage}></img>
         <span className={Styles.cardHeader}>{name}</span>
         <span className={Styles.cardText}>{id}</span>
-        </div>
+        </NavLink>
       
       artistComps.push(comp);
     }
