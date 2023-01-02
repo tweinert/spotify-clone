@@ -1,0 +1,25 @@
+.userButtons {
+  float: right;
+  margin-top: 10px;
+}
+
+.signUpButton {
+
+}
+
+.logInButton {
+  margin-left: 25px;
+}
+
+button {
+  font-size: 16px;
+  font-weight: bold;
+  height: 50px;
+  width: 120px;
+  border-radius: 20%;  
+  vertical-align: middle;
+}
+
+button:hover {
+  font-size: 18px;
+}
