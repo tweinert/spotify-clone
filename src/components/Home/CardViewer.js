@@ -11,7 +11,7 @@ function CardViewer(props) {
 
   // run on prop change to ensure it runs after fetch
   useEffect(() => {
-    if (type == "artists") {
+    if (type === "artists") {
       createArtistCards();
     }
   }, [props]);

@@ -31,7 +31,7 @@ function SongList(props) {
     const songList = songSnap.docs.map(doc => doc.data());
 
     // sort song list
-    let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
+    let sortArray = songList.sort((a, b) => a.Album.localeCompare(b.Album) || a["Track Number"] - b["Track Number"]);
 
     setSongs([...sortArray]);
   }
