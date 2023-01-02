@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, doc, getDocs } from "firebase/firestore/lite";
-import db from ".././Firebase";
+import { db } from ".././Firebase";
 import Styles from "../../styles/artistPage/songList.module.css"
 
 function SongList(props) {

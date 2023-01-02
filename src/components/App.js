@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { collection, doc, getDocs } from "firebase/firestore/lite";
-import db from "./Firebase";
+import { db } from "./Firebase";
 import Styles from "../styles/app.module.css";
 import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
