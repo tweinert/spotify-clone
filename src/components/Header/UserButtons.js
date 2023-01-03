@@ -36,9 +36,14 @@ function UserButtons() {
   return (
     <div className={Styles.userButtons}>
       <div className={Styles.userText}>{userName}</div>
-      <button className={Styles.signUpButton}>Sign up</button>
-      <button className={Styles.logInButton} onClick={popupLogIn}>Log in</button>
-      <button className={Styles.signOutButton} onClick={signOutUser}>Sign Out</button>
+      {userName
+        ? <button className={Styles.signOutButton} onClick={signOutUser}>Sign Out</button>
+        :
+        <div>
+          <button className={Styles.signUpButton}>Sign up</button>
+          <button className={Styles.logInButton} onClick={popupLogIn}>Log in</button>
+        </div>
+      }
     </div>
   );
 }
