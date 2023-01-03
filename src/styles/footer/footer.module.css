@@ -1,7 +1,7 @@
 .footer {
   /* grid */
   grid-column: 1 / -1;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 
   background-color: #181818;
   border-top: 1px solid #282828;

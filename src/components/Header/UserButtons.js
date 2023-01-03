@@ -1,8 +1,10 @@
+import React, { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { provider } from "../Firebase";
-import Styles from "../../styles/home/userButtons.module.css";
+import Styles from "../../styles/header/userButtons.module.css";
 
 function UserButtons() {
+  const [userName, setUserName] = useState();
 
   const popupLogIn = () => {
     const auth = getAuth();
@@ -11,6 +13,8 @@ function UserButtons() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
+        console.log(user);
+        setUserName(user.displayName);
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
@@ -22,6 +26,7 @@ function UserButtons() {
   const signOutUser = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
+      setUserName("");
       console.log("sign out successful");
     }).catch((error) => {
       console.log("sign out error: " + error);
@@ -30,6 +35,7 @@ function UserButtons() {
   
   return (
     <div className={Styles.userButtons}>
+      <div className={Styles.userText}>{userName}</div>
       <button className={Styles.signUpButton}>Sign up</button>
       <button className={Styles.logInButton} onClick={popupLogIn}>Log in</button>
       <button className={Styles.signOutButton} onClick={signOutUser}>Sign Out</button>

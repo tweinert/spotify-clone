@@ -7,6 +7,7 @@ import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
 import ArtistPage from './ArtistPage/ArtistPage';
+import Header from './Header/Header';
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
     <BrowserRouter>
       <div className={Styles.app}>
         <Nav />
+        <Header />
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home artistArr={artists} />} />

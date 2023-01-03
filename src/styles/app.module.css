@@ -22,5 +22,5 @@ html, body {
   /* grid container settings */
   display: grid;
   grid-template-columns: 240px 1fr;
-  grid-template-rows: 1fr 140px;
+  grid-template-rows: 75px 1fr 140px;
 }

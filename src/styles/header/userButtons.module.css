@@ -1,6 +1,12 @@
 .userButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   float: right;
   margin-top: 10px;
+
+  background-color: #121212;
+  color: #fff;
 }
 
 .signUpButton {
