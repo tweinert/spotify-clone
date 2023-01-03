@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 import { provider } from "../Firebase";
 import Styles from "../../styles/home/userButtons.module.css";
 
@@ -18,11 +18,21 @@ function UserButtons() {
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
   }
+
+  const signOutUser = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("sign out successful");
+    }).catch((error) => {
+      console.log("sign out error: " + error);
+    });
+  }
   
   return (
     <div className={Styles.userButtons}>
       <button className={Styles.signUpButton}>Sign up</button>
       <button className={Styles.logInButton} onClick={popupLogIn}>Log in</button>
+      <button className={Styles.signOutButton} onClick={signOutUser}>Sign Out</button>
     </div>
   );
 }
