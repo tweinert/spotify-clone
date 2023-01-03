@@ -3,7 +3,9 @@ import UserButtons from "./UserButtons";
 
 function Header() {
   return (
-    <UserButtons className={Styles.header} />
+    <div className={Styles.header}>
+      <UserButtons className={Styles.header} />
+    </div>
   );
 }
 

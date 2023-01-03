@@ -9,6 +9,16 @@
   --decorative-subdued: #292929;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
 html, body {
   margin: 0;
   height: 100%;

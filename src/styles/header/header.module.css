@@ -3,7 +3,7 @@
   grid-row: 1 / 2;
 
   display: flex;
-
+  justify-content: flex-end;
   background-color: #121212;
 
 }

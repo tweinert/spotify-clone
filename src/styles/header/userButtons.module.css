@@ -1,20 +1,12 @@
 .userButtons {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  float: right;
   margin-top: 10px;
 
   background-color: #121212;
   color: #fff;
-}
-
-.signUpButton {
-
-}
-
-.logInButton {
-
 }
 
 button {
@@ -24,7 +16,10 @@ button {
   width: 120px;
   border-radius: 20%;  
   vertical-align: middle;
-  margin-left: 25px;
+  margin-right: 40px;
+
+  color: black;
+  background-color: white;
 }
 
 button:hover {
