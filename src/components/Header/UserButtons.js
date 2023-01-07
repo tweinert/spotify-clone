@@ -29,7 +29,6 @@ function UserButtons() {
     const docSnap = await setDoc(docRef, {}, {
       merge: true
     });
-    console.log(docSnap);
   }
 
   const signOutUser = () => {
