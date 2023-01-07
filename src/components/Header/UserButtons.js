@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
-import { provider } from "../Firebase";
+import { db, provider } from "../Firebase";
+import { doc, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
 import Styles from "../../styles/header/userButtons.module.css";
 
 function UserButtons() {
@@ -13,14 +14,22 @@ function UserButtons() {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential.accessToken;
         const user = result.user;
-        console.log(user);
         setUserName(user.displayName);
+        signUpUser();
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
+  }
+  
+  const signUpUser = async() => {
+    // let docRef = collection("Users").doc(getAuth().currentUser.uid);
+    const docRef = doc(db, "Users", getAuth().currentUser.uid);
+    const docSnap = await setDoc(docRef, {}, {
+      merge: true
+    });
+    console.log(docSnap);
   }
 
   const signOutUser = () => {
