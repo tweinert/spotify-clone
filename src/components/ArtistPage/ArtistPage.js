@@ -1,6 +1,6 @@
 import Styles from "../../styles/artistPage/artistPage.module.css";
 import Player from "./Player";
-import SongList from "./SongList";
+import SongList from "../Global/SongList";
 import ArtistHeader from "./ArtistHeader";
 
 function ArtistPage(props) {
@@ -8,7 +8,7 @@ function ArtistPage(props) {
     <div className={Styles.artistPage}>
       <ArtistHeader artistName={props.artistName} />
       <Player />
-      <SongList id={props.id} />
+      <SongList id="YvrYPnCbCe6Wq4X9juV3" type="playlist" />
     </div>
   );
 }
