@@ -43,11 +43,19 @@ function SongList(props) {
   const fetchSongDataPlaylist = async() => {
     // get songs from user > (userId) > playlists > (playlistId) > Songs > (songId) > id
     // ArtistPage SongList id={playlistId}
-    const subColRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists");
+    const subColRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists", props.id, "Songs");
     const songSnap = await getDocs(subColRef);
-    console.log(songSnap.data());
+    const songList = songSnap.docs.map(doc => doc.data());
 
-    // order by track number
+    let songIdList = [];
+    for (const element of songList) {
+      songIdList.push(element.Id);
+    }
+
+    // TODO use songIdList for Artist > id > Songs > id
+    // need to search for song id through every artist
+    
+    // let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
   }
 
   const createSongComponents = () => {
