@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs } from "firebase/firestore/lite";
+import { collection, doc, getDocs, documentId } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/artistPage/songList.module.css"
@@ -54,6 +54,14 @@ function SongList(props) {
 
     // TODO use songIdList for Artist > id > Songs > id
     // need to search for song id through every artist
+    // get all artist docs
+    // for each artist doc
+    let songObjList = [];
+    for (const element of songIdList) {
+      let colRef = collection(db, "Artists", element);
+    }
+
+    console.log(songObjList);
     
     // let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
   }
