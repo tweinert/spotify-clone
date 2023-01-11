@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs, documentId } from "firebase/firestore/lite";
+import { collection, doc, getDocs, documentId, getDoc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/artistPage/songList.module.css"
@@ -52,18 +52,29 @@ function SongList(props) {
       songIdList.push(element.Id);
     }
 
+    // get artist id list
+    const artistColRef = collection(db, "Artists");
+    const artistSnap = await getDocs(artistColRef);
+    const artistIdList = artistSnap.docs.map(doc => doc.id);
+
     // TODO use songIdList for Artist > id > Songs > id
     // need to search for song id through every artist
     // get all artist docs
     // for each artist doc
     let songObjList = [];
-    for (const element of songIdList) {
-      let colRef = collection(db, "Artists", element);
+    for (const songId of songIdList) {
+      for (const artistId of artistIdList) {
+        const songRef = doc(db, "Artists", artistId, "Songs", songId);
+        const songSnap = await getDoc(songRef);
+        if (songSnap.exists()) {
+          songObjList.push(songSnap.data());
+        }
+      }
     }
 
-    console.log(songObjList);
-    
     // let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
+
+    console.log(songObjList);    
   }
 
   const createSongComponents = () => {
