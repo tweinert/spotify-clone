@@ -45,22 +45,15 @@ function SongList(props) {
     // ArtistPage SongList id={playlistId}
     const subColRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists", props.id, "Songs");
     const songSnap = await getDocs(subColRef);
-    const songList = songSnap.docs.map(doc => doc.data());
-
-    let songIdList = [];
-    for (const element of songList) {
-      songIdList.push(element.Id);
-    }
+    const songIdList = songSnap.docs.map(doc => doc.data().Id);
 
     // get artist id list
     const artistColRef = collection(db, "Artists");
     const artistSnap = await getDocs(artistColRef);
     const artistIdList = artistSnap.docs.map(doc => doc.id);
+    const artistList = artistSnap.docs.map(doc => doc.data());
 
-    // TODO use songIdList for Artist > id > Songs > id
-    // need to search for song id through every artist
-    // get all artist docs
-    // for each artist doc
+    // TODO this shouldnt need an await as artist data already retrieved
     let songObjList = [];
     for (const songId of songIdList) {
       for (const artistId of artistIdList) {
@@ -72,17 +65,21 @@ function SongList(props) {
       }
     }
 
-    // let sortArray = songList.sort((a, b) => a["Track Number"] - b["Track Number"]);
-
-    console.log(songObjList);    
+    setSongs([...songObjList]); 
   }
 
   const createSongComponents = () => {
     let songComps = [];
+    let i = 1;
     for (const element of songs) {
       let album = element.Album;
       let title = element.Title;
-      let trackNumber = element["Track Number"];
+      let trackNumber = 0;
+      if (props.type === "playlist") {
+        trackNumber = i;
+      } else {
+        trackNumber = element["Track Number"];
+      }
       
       // change length value to minutes:seconds
       let length = element.Length;
@@ -100,8 +97,10 @@ function SongList(props) {
       let comp = <div className={Styles.tableRow} key={title}><div>{trackNumber}</div><div>{title}</div><div>{album}</div><div>{length}</div></div>;
 
       songComps.push(comp);
-    }
 
+      i++;
+    }
+    
     setSongComponents([...songComps]);
   }
   
