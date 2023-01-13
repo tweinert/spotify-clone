@@ -53,7 +53,7 @@ function SongList(props) {
     const artistIdList = artistSnap.docs.map(doc => doc.id);
     const artistList = artistSnap.docs.map(doc => doc.data());
 
-    // TODO this shouldnt need an await as artist data already retrieved
+    // second getDoc is required as getDocs is shallow
     let songObjList = [];
     for (const songId of songIdList) {
       for (const artistId of artistIdList) {
