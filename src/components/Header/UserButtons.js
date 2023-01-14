@@ -4,6 +4,7 @@ import { db, provider } from "../Firebase";
 import { doc, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
 import Styles from "../../styles/header/userButtons.module.css";
 
+// TODO refreshing doesnt sign out yet it displays as such
 function UserButtons() {
   const [userName, setUserName] = useState();
 

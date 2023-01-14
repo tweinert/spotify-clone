@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs, documentId, getDoc } from "firebase/firestore/lite";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/artistPage/songList.module.css"

@@ -10,7 +10,7 @@ function ArtistPage(props) {
     <div className={Styles.artistPage}>
       <ArtistHeader artistName={props.artistName} />
       <Player />
-      <SongList id="YvrYPnCbCe6Wq4X9juV3" type="playlist" />
+      <SongList id={props.id} type="artist" />
     </div>
   );
 }

@@ -1,3 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, doc, getDocs, getDoc } from "firebase/firestore/lite";
+import { db } from ".././Firebase";
 import { NavLink } from 'react-router-dom';
 import Styles from "../../styles/nav/navPlaylists.module.css";
 
@@ -5,6 +9,28 @@ import Styles from "../../styles/nav/navPlaylists.module.css";
 Created playlists are dynamically added to playlistsContainer div 
 */
 function NavPlaylists() {
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        fetchPlaylistData();
+      } else {
+        return;
+      }
+    });
+  }, []);
+
+  const fetchPlaylistData = async() => {
+    // get playlist Id's
+    const colRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists");
+    const playlistSnap = await getDocs(colRef);
+    const playlistIdList = playlistSnap.docs.map(doc => doc.id);
+    console.log(playlistIdList);
+    // need playlist id AND name
+  }
+  
   return (
     <div className={Styles.playlistNavContainer}>
       <ul className={Styles.linkContainer}>
