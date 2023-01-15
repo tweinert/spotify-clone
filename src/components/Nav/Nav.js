@@ -3,12 +3,12 @@ import NavLogo from "./NavLogo";
 import NavLinks from "./NavLinks";
 import NavPlaylists from "./NavPlaylists";
 
-function Nav() {
+function Nav(props) {
   return (
     <div className={Styles.nav}>
       <NavLogo />
       <NavLinks />
-      <NavPlaylists />
+      <NavPlaylists setPlaylists={props.setPlaylists} />
     </div>);
 }
 

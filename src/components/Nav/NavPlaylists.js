@@ -8,8 +8,9 @@ import Styles from "../../styles/nav/navPlaylists.module.css";
 /*
 Created playlists are dynamically added to playlistsContainer div 
 */
-function NavPlaylists() {
+function NavPlaylists(props) {
   const [playlists, setPlaylists] = useState([]);
+  const [playlistComponents, setPlaylistComponents] = useState([]);
 
   useEffect(() => {
     const auth = getAuth();
@@ -22,13 +23,50 @@ function NavPlaylists() {
     });
   }, []);
 
+  useEffect(() => {
+    props.setPlaylists(playlists);
+    createPlaylistLinks();
+  }, [playlists]);
+
   const fetchPlaylistData = async() => {
     // get playlist Id's
     const colRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists");
     const playlistSnap = await getDocs(colRef);
     const playlistIdList = playlistSnap.docs.map(doc => doc.id);
-    console.log(playlistIdList);
-    // need playlist id AND name
+    const playlistNameList = playlistSnap.docs.map(doc => doc.data().Name);
+
+    // create object with id and name for each playlist
+    let i = 0;
+    const playlistObjArr = [];
+    for (const playlistId of playlistIdList) {
+      let newObj = {id: playlistId, name: playlistNameList[i]};
+      playlistObjArr.push(newObj);
+      i++;
+    }
+
+    setPlaylists(playlistObjArr);
+  }
+
+  const createPlaylistLinks = () => {
+    // for each element of playlists state array
+    // create link component for playlist
+    // use id for href and name for text
+    let playlistComps = [];
+    for (const element of playlists) {
+      let id = element.id;
+      let name = element.name;
+      let path = "/" + id;
+
+      let comp = <div className={Styles.playlistElement} key={id}>
+        <a className={Styles.playlistLink} href={path}>
+          <span className={Styles.playlistText}>{name}</span>
+        </a>
+      </div>;
+
+      playlistComps.push(comp);
+    }
+
+    setPlaylistComponents(playlistComps);
   }
   
   return (
@@ -54,20 +92,9 @@ function NavPlaylists() {
 
       <hr />
       
-      <div className={Styles.playlistsContainer}>
-
-        <div className={Styles.playlistElement}>
-          <a className={Styles.playlistLink} href="/">
-            <span className={Styles.playlistText}>Example playlist</span>
-          </a>
+        <div className={Styles.playlistsContainer}>
+          {playlistComponents}
         </div>
-
-        <div className={Styles.playlistElement}>
-          <a className={Styles.playlistLink} href="/">
-            <span className={Styles.playlistText}>Example playlist</span>
-          </a>
-        </div>
-      </div>
     </div>
     // hr
     // playlist container

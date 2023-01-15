@@ -13,6 +13,8 @@ import Header from './Header/Header';
 function App() {
   const [artists, setArtists] = useState([]);
   const [artistComponents, setArtistComponents] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
+  const [playlistComponents, setPlaylistComponents] = useState([]);
 
   // get artists from db
   useEffect(() => {
@@ -25,6 +27,10 @@ function App() {
     createArtistComponents();
     console.log("App artists changed");
   }, [artists]);
+
+  useEffect(() => {
+    createPlaylistComponents();
+  }, [playlists]);
 
   // gets unique artists from song list in database
   const fetchArtistData = async() => {
@@ -59,11 +65,15 @@ function App() {
     setArtistComponents([...artistComps]);
   }
 
+  const createPlaylistComponents = () => {
+
+  }
+
 
   return (
     <BrowserRouter>
       <div className={Styles.app}>
-        <Nav />
+        <Nav setPlaylists={setPlaylists} />
         <Header />
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
