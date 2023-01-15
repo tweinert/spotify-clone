@@ -57,7 +57,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} artistName={name}/>} />;
+      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} artistName={name} type="artist" />} />;
 
       artistComps.push(comp);
     }
@@ -66,7 +66,18 @@ function App() {
   }
 
   const createPlaylistComponents = () => {
+    let playlistComps = [];
+    for (const element of playlists) {
+      let id = element.id;
+      let name = element.name;
+      let path = "/" + id;
 
+      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} type="playlist" />} />;
+
+      playlistComps.push(comp)
+    }
+
+    setPlaylistComponents([...playlistComps]);
   }
 
 
@@ -78,8 +89,9 @@ function App() {
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home artistArr={artists} />} />
-          <Route path="/artistPage" element={<ArtistPage />} />
+          {/* <Route path="/artistPage" element={<ArtistPage />} /> */}
           {artistComponents}
+          {playlistComponents}
         </Routes>
         <Footer />
       </div>
