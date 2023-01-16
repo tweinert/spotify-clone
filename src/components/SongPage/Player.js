@@ -1,4 +1,4 @@
-import Styles from "../../styles/artistPage/player.module.css"
+import Styles from "../../styles/songPage/player.module.css"
 
 function Player() {
   return (

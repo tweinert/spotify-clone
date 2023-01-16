@@ -6,7 +6,7 @@ import Styles from "../styles/app.module.css";
 import Nav from "./Nav/Nav";
 import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
-import ArtistPage from './ArtistPage/ArtistPage';
+import SongPage from './SongPage/SongPage';
 import Header from './Header/Header';
 
 
@@ -57,7 +57,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} artistName={name} type="artist" />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="artist" />} />;
 
       artistComps.push(comp);
     }
@@ -72,7 +72,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<ArtistPage key={id} id={id} type="playlist" />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="playlist" />} />;
 
       playlistComps.push(comp)
     }
@@ -89,7 +89,6 @@ function App() {
         <Routes>
           {/* <Route path="/search"><Search /></Route> */}
           <Route path="/" element={<Home artistArr={artists} />} />
-          {/* <Route path="/artistPage" element={<ArtistPage />} /> */}
           {artistComponents}
           {playlistComponents}
         </Routes>
