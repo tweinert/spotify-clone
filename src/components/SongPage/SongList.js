@@ -3,7 +3,6 @@ import { collection, doc, getDocs, getDoc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/songPage/songList.module.css"
-// TODO change songList css location
 
 function SongList(props) {
   // use props.id to access Songs collection

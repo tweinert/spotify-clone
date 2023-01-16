@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { collection, doc, getDocs, getDoc } from "firebase/firestore/lite";
 import { db } from ".././Firebase";
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import Styles from "../../styles/nav/navPlaylists.module.css";
 
 /*

@@ -30,6 +30,7 @@ function App() {
 
   useEffect(() => {
     createPlaylistComponents();
+    console.log("App playlists changed");
   }, [playlists]);
 
   // gets unique artists from song list in database
