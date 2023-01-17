@@ -58,9 +58,9 @@ function NavPlaylists(props) {
       let path = "/" + id;
 
       let comp = <div className={Styles.playlistElement} key={id}>
-        <a className={Styles.playlistLink} href={path}>
+        <NavLink to={path} className={Styles.playlistLink} >
           <span className={Styles.playlistText}>{name}</span>
-        </a>
+        </NavLink>
       </div>;
 
       playlistComps.push(comp);

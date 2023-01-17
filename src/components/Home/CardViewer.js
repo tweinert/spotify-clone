@@ -22,7 +22,8 @@ function CardViewer(props) {
       // create card for each artist
       let name = element.name;
       let id = element.id;
-      let comp = <NavLink to={"/" + id}className={Styles.cardContainer} key={id}>
+      let path = "/" + id;
+      let comp = <NavLink to={path} className={Styles.cardContainer} key={id}>
         <img className={Styles.cardImage}></img>
         <span className={Styles.cardHeader}>{name}</span>
         <span className={Styles.cardText}>{id}</span>
