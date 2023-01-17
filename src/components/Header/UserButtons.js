@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import React, { useState, useEffect } from 'react';
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "firebase/auth";
 import { db, provider } from "../Firebase";
 import { doc, getDoc, getDocs, setDoc } from "firebase/firestore/lite";
 import Styles from "../../styles/header/userButtons.module.css";
@@ -7,6 +7,15 @@ import Styles from "../../styles/header/userButtons.module.css";
 // TODO refreshing doesnt sign out yet it displays as such
 function UserButtons() {
   const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserName(user.displayName);
+      }
+    })
+  }, []);
 
   const popupLogIn = () => {
     const auth = getAuth();
