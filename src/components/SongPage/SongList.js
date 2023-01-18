@@ -93,7 +93,19 @@ function SongList(props) {
       }
       length = minutes + ":" + seconds;
 
-      let comp = <div className={Styles.tableRow} key={title}><div>{trackNumber}</div><div>{title}</div><div>{album}</div><div>{length}</div></div>;
+      // TODO add button for each playlist
+      let comp = <div className={Styles.tableRow} key={title}>
+        <div>{trackNumber}</div>
+        <div>{title}</div>
+        <div>{album}</div>
+        <div>{length}</div>
+        <div className={Styles.dropDown}>
+          <button className={Styles.dropBtn}></button>
+          <div id="addDropDown" className={Styles.dropDownContent}>
+            <button>Add to playlist1</button>
+          </div>
+        </div>
+      </div>;
 
       songComps.push(comp);
 
@@ -110,6 +122,7 @@ function SongList(props) {
         <div>Title</div>
         <div>Album</div>
         <div>Length</div>
+        <div></div>
       </div>
       <hr />
       <div className={Styles.tableSongs}>
