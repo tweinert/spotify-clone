@@ -99,7 +99,7 @@ function SongList(props) {
         <div>{title}</div>
         <div>{album}</div>
         <div>{length}</div>
-        <div className={Styles.dropDown}>
+        <div className={Styles.dropDown} onClick={showDropDown}>
           <button className={Styles.dropBtn}></button>
           <div id="addDropDown" className={Styles.dropDownContent}>
             <button>Add to playlist1</button>
@@ -113,6 +113,10 @@ function SongList(props) {
     }
     
     setSongComponents([...songComps]);
+  }
+
+  const showDropDown = (e) => {
+    e.target.nextElementSibling.classList.toggle(Styles.show);
   }
   
   return (
