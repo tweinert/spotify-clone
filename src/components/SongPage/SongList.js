@@ -24,7 +24,7 @@ function SongList(props) {
   // update song list
   useEffect(() => {
     createSongComponents();
-  }, [songs]);
+  }, [songs, props.playlists]);
 
 
   // get song info and store each song as object in state array
@@ -93,6 +93,16 @@ function SongList(props) {
       }
       length = minutes + ":" + seconds;
 
+
+      let addBtnComps = [];
+      for (const element of props.playlists) {
+        let name = element.name;
+
+        const addBtn = <button>Add to {name}</button>;
+
+        addBtnComps.push(addBtn);
+      }
+
       // TODO add button for each playlist
       let comp = <div className={Styles.tableRow} key={title}>
         <div>{trackNumber}</div>
@@ -102,7 +112,7 @@ function SongList(props) {
         <div className={Styles.dropDown} onClick={showDropDown}>
           <button className={Styles.dropBtn}></button>
           <div id="addDropDown" className={Styles.dropDownContent}>
-            <button>Add to playlist1</button>
+            {addBtnComps}
           </div>
         </div>
       </div>;

@@ -58,7 +58,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="artist" />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="artist" playlists={playlists} />} />;
 
       artistComps.push(comp);
     }
@@ -73,7 +73,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="playlist" />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="playlist" playlists={playlists} />} />;
 
       playlistComps.push(comp)
     }
