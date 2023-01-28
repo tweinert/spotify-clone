@@ -29,6 +29,7 @@ function App() {
   }, [artists]);
 
   useEffect(() => {
+    createArtistComponents();
     createPlaylistComponents();
     console.log("App playlists changed");
   }, [playlists]);

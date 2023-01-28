@@ -24,6 +24,7 @@ function SongList(props) {
   // update song list
   useEffect(() => {
     createSongComponents();
+    console.log(props.playlists);
   }, [songs, props.playlists]);
 
 
@@ -98,9 +99,10 @@ function SongList(props) {
       for (const element of props.playlists) {
         let name = element.name;
 
-        const addBtn = <button>Add to {name}</button>;
+        const addBtn = <button onclick={addToPlaylist}>Add to {name}</button>;
 
         addBtnComps.push(addBtn);
+        console.log("but did it get here?");
       }
 
       // TODO add button for each playlist
@@ -123,6 +125,12 @@ function SongList(props) {
     }
     
     setSongComponents([...songComps]);
+  }
+
+  const addToPlaylist = () => {
+    // get song id
+    // get playlist id
+    // add song to playlist
   }
 
   const showDropDown = (e) => {
