@@ -24,7 +24,6 @@ function SongList(props) {
   // update song list
   useEffect(() => {
     createSongComponents();
-    console.log(props.playlists);
   }, [songs, props.playlists]);
 
 
@@ -96,28 +95,38 @@ function SongList(props) {
 
 
       let addBtnComps = [];
-      for (const element of props.playlists) {
-        let name = element.name;
-
-        const addBtn = <button onclick={addToPlaylist}>Add to {name}</button>;
-
-        addBtnComps.push(addBtn);
-        console.log("but did it get here?");
+      if (props.type !== "playlist") {
+        for (const element of props.playlists) {
+          let name = element.name;
+  
+          const addBtn = <button key={name} onClick={addToPlaylist}>Add to {name}</button>;
+  
+          addBtnComps.push(addBtn);
+        }
       }
-
-      // TODO add button for each playlist
-      let comp = <div className={Styles.tableRow} key={title}>
-        <div>{trackNumber}</div>
-        <div>{title}</div>
-        <div>{album}</div>
-        <div>{length}</div>
-        <div className={Styles.dropDown} onClick={showDropDown}>
-          <button className={Styles.dropBtn}></button>
-          <div id="addDropDown" className={Styles.dropDownContent}>
-            {addBtnComps}
+      
+      let comp = <div></div>;
+      if (props.type === "playlist") {
+        comp = <div className={Styles.tableRow} key={title}>
+          <div>{trackNumber}</div>
+          <div>{title}</div>
+          <div>{album}</div>
+          <div>{length}</div>
+        </div>;
+      } else {
+        comp = <div className={Styles.tableRow} key={title}>
+          <div>{trackNumber}</div>
+          <div>{title}</div>
+          <div>{album}</div>
+          <div>{length}</div>
+          <div className={Styles.dropDown} onClick={showDropDown}>
+            <button className={Styles.dropBtn}></button>
+            <div id="addDropDown" className={Styles.dropDownContent}>
+              {addBtnComps}
+            </div>
           </div>
-        </div>
-      </div>;
+        </div>;
+      }
 
       songComps.push(comp);
 
