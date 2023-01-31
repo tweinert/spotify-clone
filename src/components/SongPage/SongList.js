@@ -31,7 +31,15 @@ function SongList(props) {
   const fetchSongDataArtist = async() => {
     const subColRef = collection(db, "Artists", props.id, "Songs");
     const songSnap = await getDocs(subColRef);
-    const songList = songSnap.docs.map(doc => doc.data());
+    // const songList = songSnap.docs.map(doc => doc.data());
+    const songList = songSnap.docs.map((doc) => {
+      return {
+        id: doc.id,
+        ...doc.data()
+      }
+    });
+
+    console.log(songList);
 
     // sort song list
     let sortArray = songList.sort((a, b) => a.Album.localeCompare(b.Album) || a["Track Number"] - b["Track Number"]);
@@ -71,6 +79,7 @@ function SongList(props) {
     let songComps = [];
     let i = 1;
     for (const element of songs) {
+      let id = element.id;
       let album = element.Album;
       let title = element.Title;
       let trackNumber = 0;
@@ -99,7 +108,7 @@ function SongList(props) {
         for (const element of props.playlists) {
           let name = element.name;
   
-          const addBtn = <button key={name} onClick={addToPlaylist}>Add to {name}</button>;
+          const addBtn = <button key={name} onClick={() => addToPlaylist(id, element.id)}>Add to {name}</button>;
   
           addBtnComps.push(addBtn);
         }
@@ -119,8 +128,8 @@ function SongList(props) {
           <div>{title}</div>
           <div>{album}</div>
           <div>{length}</div>
-          <div className={Styles.dropDown} onClick={showDropDown}>
-            <button className={Styles.dropBtn}></button>
+          <div className={Styles.dropDown}>
+            <button className={Styles.dropBtn} onClick={showDropDown}></button>
             <div id="addDropDown" className={Styles.dropDownContent}>
               {addBtnComps}
             </div>
@@ -136,10 +145,13 @@ function SongList(props) {
     setSongComponents([...songComps]);
   }
 
-  const addToPlaylist = () => {
+  const addToPlaylist = (songId, playlistId) => {
     // get song id
     // get playlist id
+    console.log(songId, playlistId);
+    
     // add song to playlist
+
   }
 
   const showDropDown = (e) => {
