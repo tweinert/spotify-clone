@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs, getDoc } from "firebase/firestore/lite";
+import { collection, doc, getDocs, getDoc, addDoc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/songPage/songList.module.css"
@@ -145,13 +145,16 @@ function SongList(props) {
     setSongComponents([...songComps]);
   }
 
-  const addToPlaylist = (songId, playlistId) => {
+  const addToPlaylist = async(songId, playlistId) => {
     // get song id
     // get playlist id
     console.log(songId, playlistId);
     
     // add song to playlist
-
+    const docRef = await addDoc(collection(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs"), {
+      Id: songId
+    });
+    
   }
 
   const showDropDown = (e) => {
