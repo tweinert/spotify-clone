@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs, getDoc, addDoc } from "firebase/firestore/lite";
+import { collection, doc, getDocs, getDoc, addDoc, deleteDoc } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/songPage/songList.module.css"
@@ -67,7 +67,9 @@ function SongList(props) {
         const songRef = doc(db, "Artists", artistId, "Songs", songId);
         const songSnap = await getDoc(songRef);
         if (songSnap.exists()) {
-          songObjList.push(songSnap.data());
+          let songObj = songSnap.data();
+          songObj.id = songId;
+          songObjList.push(songObj);
         }
       }
     }
@@ -114,7 +116,7 @@ function SongList(props) {
           addBtnComps.push(addBtn);
         }
       } else if (props.type === "playlist") {
-        const removeBtn = <button key={i + "remove"} onClick={() => removeFromPlaylist()}>Remove from Playlist</button>
+        const removeBtn = <button key={i + "remove"} onClick={() => removeFromPlaylist(id, props.id)}>Remove from Playlist</button>
 
         removeBtnComps.push(removeBtn);
       }
@@ -165,10 +167,14 @@ function SongList(props) {
     const docRef = await addDoc(collection(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs"), {
       Id: songId
     });
+
+    console.log("docRef: " + docRef);
   }
 
-  const removeFromPlaylist = async() => {
-    console.log("removed");
+  const removeFromPlaylist = async(songId, playlistId) => {
+    // TODO use songId field to find document id to remove
+    console.log(songId, playlistId);
+    // await deleteDoc(doc(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs", songId));
   }
 
   const showDropDown = (e) => {
