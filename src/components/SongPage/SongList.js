@@ -104,6 +104,7 @@ function SongList(props) {
 
 
       let addBtnComps = [];
+      let removeBtnComps = [];
       if (props.type !== "playlist") {
         for (const element of props.playlists) {
           let name = element.name;
@@ -112,6 +113,10 @@ function SongList(props) {
   
           addBtnComps.push(addBtn);
         }
+      } else if (props.type === "playlist") {
+        const removeBtn = <button key={i + "remove"} onClick={() => removeFromPlaylist()}>Remove from Playlist</button>
+
+        removeBtnComps.push(removeBtn);
       }
       
       let comp = <div></div>;
@@ -121,6 +126,12 @@ function SongList(props) {
           <div>{title}</div>
           <div>{album}</div>
           <div>{length}</div>
+          <div className={Styles.dropDown}>
+            <button className={Styles.dropBtn} onClick={showDropDown}></button>
+            <div id="addDropDown" className={Styles.dropDownContent}>
+              {removeBtnComps}
+            </div>
+          </div>
         </div>;
       } else {
         comp = <div className={Styles.tableRow} key={title}>
@@ -154,7 +165,10 @@ function SongList(props) {
     const docRef = await addDoc(collection(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs"), {
       Id: songId
     });
-    
+  }
+
+  const removeFromPlaylist = async() => {
+    console.log("removed");
   }
 
   const showDropDown = (e) => {
