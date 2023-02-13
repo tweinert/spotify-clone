@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, doc, getDocs, getDoc, addDoc, deleteDoc } from "firebase/firestore/lite";
+import { collection, doc, getDocs, getDoc, addDoc, deleteDoc, query, where } from "firebase/firestore/lite";
 import { getAuth } from "firebase/auth";
 import { db } from ".././Firebase";
 import Styles from "../../styles/songPage/songList.module.css"
@@ -172,9 +172,16 @@ function SongList(props) {
   }
 
   const removeFromPlaylist = async(songId, playlistId) => {
-    // TODO use songId field to find document id to remove
-    console.log(songId, playlistId);
-    // await deleteDoc(doc(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs", songId));
+    // Finds playlist entry with songId as field and delete the document
+    const playlistRef = collection(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs");
+    const q = query(playlistRef, where("Id", "==", songId));
+    const querySnap = await getDocs(q);
+    await querySnap.forEach((docSnap) => {
+      deleteDoc(doc(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs", docSnap.id));
+    });
+
+    // TODO refresh songs
+    
   }
 
   const showDropDown = (e) => {
