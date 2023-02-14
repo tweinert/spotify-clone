@@ -180,8 +180,8 @@ function SongList(props) {
       deleteDoc(doc(db, "Users", getAuth().currentUser.uid, "Playlists", playlistId, "Songs", docSnap.id));
     });
 
-    // TODO refresh songs
-    
+    // TODO needs to do this after firestore db has updated
+    setTimeout(fetchSongDataPlaylist, 1000);
   }
 
   const showDropDown = (e) => {
