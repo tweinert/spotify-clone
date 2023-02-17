@@ -95,7 +95,7 @@ function App() {
           {artistComponents}
           {playlistComponents}
         </Routes>
-        <Footer queue={queue} />
+        <Footer queue={queue} setQueue={setQueue} />
       </div>
     </BrowserRouter>
   );

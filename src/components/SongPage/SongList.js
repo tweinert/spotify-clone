@@ -39,12 +39,12 @@ function SongList(props) {
       }
     });
 
-    console.log(songList);
-
     // sort song list
     let sortArray = songList.sort((a, b) => a.Album.localeCompare(b.Album) || a["Track Number"] - b["Track Number"]);
 
     setSongs([...sortArray]);
+    // testing
+    props.setTestSongs([...sortArray]);
   }
 
   const fetchSongDataPlaylist = async() => {
@@ -75,6 +75,9 @@ function SongList(props) {
     }
 
     setSongs([...songObjList]); 
+    // testing
+    console.log(songObjList);
+    // props.setTestSongs([...songObjList]);
   }
 
   const createSongComponents = () => {
