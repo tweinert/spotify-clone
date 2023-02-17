@@ -1,7 +1,8 @@
+import { useState, useEffect } from 'react';
 import Styles from "../../styles/footer/footer.module.css";
 
-function Footer() {
-  return <div className={Styles.footer}>This is the footer</div>
+function Footer(props) {
+  return <div className={Styles.footer}>Currently Playing: {props.queue}</div>
 }
 
 export default Footer;

@@ -7,7 +7,7 @@ function SongPage(props) {
   return (
     <div className={Styles.songPage}>
       <SongPageHeader title={props.title} />
-      <Player />
+      <Player setQueue={props.setQueue} />
       <SongList id={props.id} type={props.type} playlists={props.playlists} />
     </div>
   );
