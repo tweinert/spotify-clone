@@ -16,6 +16,7 @@ function App() {
   const [playlists, setPlaylists] = useState([]);
   const [playlistComponents, setPlaylistComponents] = useState([]);
   const [queue, setQueue] = useState([]);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // get artists from db
   useEffect(() => {
@@ -60,7 +61,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="artist" playlists={playlists} setQueue={setQueue} />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="artist" playlists={playlists} setQueue={setQueue} setIsPlaying={setIsPlaying} />} />;
 
       artistComps.push(comp);
     }
@@ -75,7 +76,7 @@ function App() {
       let name = element.name;
       let path = "/" + id;
 
-      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="playlist" playlists={playlists} setQueue={setQueue} />} />;
+      let comp = <Route key={id} path={path} element={<SongPage key={id} id={id} title={name} type="playlist" playlists={playlists} setQueue={setQueue} setIsPlaying={setIsPlaying} />} />;
 
       playlistComps.push(comp)
     }
@@ -95,7 +96,7 @@ function App() {
           {artistComponents}
           {playlistComponents}
         </Routes>
-        <Footer queue={queue} setQueue={setQueue} />
+        <Footer queue={queue} setQueue={setQueue} isPlaying={isPlaying} />
       </div>
     </BrowserRouter>
   );

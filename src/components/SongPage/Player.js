@@ -6,6 +6,7 @@ function Player(props) {
   const addToQueue = () => {
     console.log("play button clicked");
     props.setQueue(props.testSongs);
+    props.setIsPlaying(true);
   }
   
   return (
