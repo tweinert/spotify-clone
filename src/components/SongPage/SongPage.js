@@ -5,13 +5,13 @@ import SongList from "./SongList";
 import SongPageHeader from "./SongPageHeader";
 
 function SongPage(props) {  
-  const [testSongs, setTestSongs] = useState([]);
+  const [songs, setSongs] = useState([]);
   
   return (
     <div className={Styles.songPage}>
       <SongPageHeader title={props.title} />
-      <Player setQueue={props.setQueue} setIsPlaying={props.setIsPlaying} testSongs={testSongs}  />
-      <SongList id={props.id} type={props.type} playlists={props.playlists} setTestSongs={setTestSongs} />
+      <Player setQueue={props.setQueue} setIsPlaying={props.setIsPlaying} songs={songs}  />
+      <SongList id={props.id} type={props.type} playlists={props.playlists} songs={songs} setSongs={setSongs} />
     </div>
   );
 }

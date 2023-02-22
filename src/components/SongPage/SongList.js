@@ -8,7 +8,6 @@ function SongList(props) {
   // use props.id to access Songs collection
   // idDoc > songCol > songIdDoc > Album, Length, Title, Track Number FIELD
   
-  const [songs, setSongs] = useState([]);
   const [songComponents, setSongComponents] = useState([]);
 
   // get song data
@@ -24,7 +23,7 @@ function SongList(props) {
   // update song list
   useEffect(() => {
     createSongComponents();
-  }, [songs, props.playlists]);
+  }, [props.songs, props.playlists]);
 
 
   // get song info and store each song as object in state array
@@ -42,9 +41,8 @@ function SongList(props) {
     // sort song list
     let sortArray = songList.sort((a, b) => a.Album.localeCompare(b.Album) || a["Track Number"] - b["Track Number"]);
 
-    setSongs([...sortArray]);
+    props.setSongs([...sortArray]);
     // testing
-    props.setTestSongs([...sortArray]);
   }
 
   const fetchSongDataPlaylist = async() => {
@@ -74,7 +72,7 @@ function SongList(props) {
       }
     }
 
-    setSongs([...songObjList]); 
+    props.setSongs([...songObjList]); 
     // testing
     console.log(songObjList);
     // props.setTestSongs([...songObjList]);
@@ -83,7 +81,7 @@ function SongList(props) {
   const createSongComponents = () => {
     let songComps = [];
     let i = 1;
-    for (const element of songs) {
+    for (const element of props.songs) {
       let id = element.id;
       let album = element.Album;
       let title = element.Title;
