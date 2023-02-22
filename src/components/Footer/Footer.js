@@ -10,9 +10,8 @@ function Footer(props) {
     // set new time
     let songTime = props.isPlaying ? props.queue[0].Length : "0";
     setSongFullTime(songTime);
-    setSongCurrentTime(songTime);
 
-    startTimer(songFullTime);
+    startTimer(songTime);
   }, [props.queue]);
 
   const getTimeRemaining = (e) => {
