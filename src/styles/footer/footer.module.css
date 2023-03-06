@@ -3,6 +3,9 @@
   grid-column: 1 / -1;
   grid-row: 3 / 4;
 
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+
   background-color: #181818;
   border-top: 1px solid #282828;
   color: white;

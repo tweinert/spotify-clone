@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import Styles from "../../styles/footer/footer.module.css";
 import SongInformation from "./SongInformation";
+import PlayerControls from "./PlayerControls";
 
 /* TODO
   player controls
@@ -14,6 +14,7 @@ function Footer(props) {
   return (
     <div className={Styles.footer}>
       <SongInformation queue={props.queue} setQueue={props.setQueue} isPlaying={props.isPlaying} />
+      <PlayerControls />
     </div>
   );
 }
