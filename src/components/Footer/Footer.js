@@ -47,8 +47,8 @@ function Footer(props) {
   return (
     <div className={Styles.footer}>
       <SongInformation queue={props.queue} setQueue={props.setQueue} isPlaying={props.isPlaying} songFullTime={songFullTime} songCurrentTime={songCurrentTime} />
-      <PlayerControls />
-      <SongProgressBar />
+      <PlayerControls isPlaying={props.isPlaying} />
+      <SongProgressBar songFullTime={songFullTime} songCurrentTime={songCurrentTime} />
     </div>
   );
 }
