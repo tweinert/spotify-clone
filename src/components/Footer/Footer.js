@@ -1,6 +1,7 @@
 import Styles from "../../styles/footer/footer.module.css";
 import SongInformation from "./SongInformation";
 import PlayerControls from "./PlayerControls";
+import SongProgressBar from "./SongProgressBar";
 
 /* TODO
   player controls
@@ -15,6 +16,7 @@ function Footer(props) {
     <div className={Styles.footer}>
       <SongInformation queue={props.queue} setQueue={props.setQueue} isPlaying={props.isPlaying} />
       <PlayerControls />
+      <SongProgressBar />
     </div>
   );
 }

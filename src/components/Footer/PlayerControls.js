@@ -9,4 +9,4 @@ function PlayerControls() {
   );
 }
 
-export default PlayerControls
+export default PlayerControls;
