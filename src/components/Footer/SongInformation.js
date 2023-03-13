@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react';
 import Styles from "../../styles/footer/songInformation.module.css";
 
 function SongInformation(props) {
+  const [currentlyPlayingComp, setCurrentlyPlayingComp] = useState(<div></div>);
+
+  useEffect(() => {
+    let comp;
+    if (props.queue[0] !== undefined) {
+      comp = <div>Currently Playing: {props.queue[0].Title}</div>;
+    }
+    setCurrentlyPlayingComp(comp);
+  }, [props.queue]);
   // converts seconds to minutes and seconds string
   const convertToTime = (time) => {
     let { total, minutes, seconds } = getTimeRemaining(time);
@@ -26,9 +35,8 @@ function SongInformation(props) {
 
   return (
     <div className={Styles.songInformation}>
-      <div>Currently Playing: {props.isPlaying ? props.queue[0].Title : "nothing"}</div>
+      {currentlyPlayingComp}
       <div>{convertToTime(props.songCurrentTime)}/{convertToTime(props.songFullTime)}</div>
-      <div>{props.isPlaying ? "true" : "false"}</div>
     </div>
   );
 }

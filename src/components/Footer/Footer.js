@@ -24,9 +24,8 @@ function Footer(props) {
     let songTime = props.isPlaying ? props.queue[0].Length : "0";
     setSongFullTime(songTime);
 
-    if (props.isPlaying) {
-      setSongCurrentTime(0);
-    }
+    setSongCurrentTime(0);
+    
   }, [props.queue]);
 
   // toggle timer
