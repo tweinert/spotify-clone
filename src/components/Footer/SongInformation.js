@@ -28,6 +28,7 @@ function SongInformation(props) {
     <div className={Styles.songInformation}>
       <div>Currently Playing: {props.isPlaying ? props.queue[0].Title : "nothing"}</div>
       <div>{convertToTime(props.songCurrentTime)}/{convertToTime(props.songFullTime)}</div>
+      <div>{props.isPlaying ? "true" : "false"}</div>
     </div>
   );
 }

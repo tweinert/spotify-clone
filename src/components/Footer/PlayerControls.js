@@ -19,10 +19,11 @@ function PlayerControls(props) {
   
   const resumeSong = () => {
     console.log("resume");
+    props.setIsPlaying(true);
   }
 
   const pauseSong = () => {
-    console.log("pause");
+    props.setIsPlaying(false);
   }
 
   return(

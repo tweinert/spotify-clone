@@ -96,7 +96,7 @@ function App() {
           {artistComponents}
           {playlistComponents}
         </Routes>
-        <Footer queue={queue} setQueue={setQueue} isPlaying={isPlaying} />
+        <Footer queue={queue} setQueue={setQueue} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
       </div>
     </BrowserRouter>
   );
